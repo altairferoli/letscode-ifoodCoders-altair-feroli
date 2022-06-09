@@ -1,0 +1,15 @@
+{
+  "name": "letscode-nodejs-aula04",
+  "version": "1.0.0",
+  "description": "Aula04",
+  "main": "index04.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1"
+  }
+}

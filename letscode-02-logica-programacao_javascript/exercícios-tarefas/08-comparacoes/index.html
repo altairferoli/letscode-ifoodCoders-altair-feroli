@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparação</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header>
+        <h1>Comparação</h1>
+    </header>
+    <section>
+        <input type="number" name="num1" placeholder="0" id="num1">
+        <select name="operator" id="operator">
+            <option value="==">==</option>
+            <option value="!=">!=</option>
+            <option value="<"><</option>
+            <option value="<="><=</option>
+            <option value=">">></option>
+            <option value=">=">>=</option>
+        </select>
+        <input type="number" name="num2" placeholder="0" id="num2">
+    </section>
+    <section>
+        <p><button onclick="comparar()">=</button></p>
+        <input type="text" name="result" placeholder="false" id="result" readonly>
+    </section>
+
+    <script src="./comparacao.js"></script>
+</body>
+</html>

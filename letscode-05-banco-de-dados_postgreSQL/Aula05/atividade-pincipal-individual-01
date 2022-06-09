@@ -1,0 +1,175 @@
+----------------------------------------------------------------------------------------------------
+
+-- ATIVIDADE PRINCIPAL INDIVIDUAL - ALTAIR FERNANDES
+
+----------------------------------------------------------------------------------------------------
+
+--1) Quantos são os produtos que são da CategoryID 2?
+
+/*
+SELECT COUNT (*)
+FROM products
+WHERE category_id = 2;
+*/
+
+----------------------------------------------------------------------------------------------------
+
+--2) Quantos produtos com SupplierID idêntico ao CategoryID e que custam mais do que 10?
+
+/*
+SELECT COUNT (*)
+FROM products
+WHERE supplier_id = category_id AND unit_price > 10;
+*/
+
+----------------------------------------------------------------------------------------------------
+
+--3) Liste todos os nomes de produtos, suas "Units" e seus respectivos preços distintos que pertecem
+--às categorias 1, 2 e 7;
+
+/*
+SELECT DISTINCT category_id, product_name, units_in_stock, units_on_order, unit_price
+FROM products
+WHERE category_id IN (1, 2, 7)
+ORDER BY category_id;
+*/
+
+----------------------------------------------------------------------------------------------------
+
+--4) Liste os 5 primeiros nomes de produtos que começam com "A" ou tenham "h" no meio do nome. 
+--Retorne em português os nomes das colunas;
+
+/*
+SELECT product_name AS nomes_dos_produtos
+FROM products
+WHERE product_name LIKE 'A%' OR product_name LIKE '%h%'
+LIMIT 5;
+*/
+
+----------------------------------------------------------------------------------------------------
+
+--5) Dê a média de preços de todos os produtos das categorias entre 1 e 5. Arredonde para 1 casa decimal;
+
+/*
+SELECT ROUND(AVG(unit_price)::numeric, 1) AS Round
+FROM products
+WHERE category_id IN (1, 2, 3, 4, 5);
+*/
+
+----------------------------------------------------------------------------------------------------
+
+--6) Liste a média de preços e a quantidade de produtos distintos por SupplierID; ordene
+--pela média de preço, do maior para o menor, e só mostre os 5 primeiros;
+
+/*
+SELECT supplier_id, AVG(unit_price) AS Average_Price, COUNT(DISTINCT product_name) AS Product_Count
+FROM products
+GROUP BY supplier_id
+ORDER BY Average_Price DESC
+LIMIT 5;
+*/
+
+----------------------------------------------------------------------------------------------------
+
+--7) Liste os clientes com mais pedidos - mas somente aqueles que tiverem a partir de 2 pedidos. 
+--Corte explicitamente os clientes que compraram de funcionários sem ID;
+
+/*
+SELECT customers.company_name AS Client, COUNT (*) AS Orders
+FROM orders
+INNER JOIN customers ON orders.customer_id = customers.customer_id
+GROUP BY Client
+ORDER BY Orders DESC
+LIMIT 5;
+*/
+
+----------------------------------------------------------------------------------------------------
+
+--8) Existe alguma cidade com mais de um código de área de telefone?
+
+--Lista com as cidades que tem mais de um código postal e quantos códigos possuem cada uma
+
+/*
+SELECT ship_city AS Cities, COUNT (DISTINCT ship_postal_code) AS PostalCodes
+FROM orders
+GROUP BY Cities
+HAVING COUNT (DISTINCT ship_postal_code) > 1;
+*/
+
+--Quantidade de cidades com mais de um código postal
+
+/*
+SELECT COUNT(*)
+FROM (
+    SELECT ship_city
+    FROM orders
+    GROUP BY ship_city
+    HAVING COUNT (DISTINCT ship_postal_code) > 1
+) AS NumCities;
+*/
+
+----------------------------------------------------------------------------------------------------
+
+--9) Gere uma relação com os nomes dos clientes, suas cidades e países, em ordem alfabética de nome;
+
+/*
+SELECT company_name, city, country
+FROM customers
+ORDER BY company_name;
+*/
+
+----------------------------------------------------------------------------------------------------
+
+--10) Na relação do item (9), filtre pelos clientes da Alemanha, da França e da Espanha, 
+--excluindo-se os clientes que vivem nas capitais destes países;
+
+/*
+SELECT company_name, city, country
+FROM customers
+WHERE country IN ('Germany', 'France', 'Spain') AND city NOT IN ('Berlin', 'Paris', 'Madrid')
+ORDER BY company_name;
+*/
+
+----------------------------------------------------------------------------------------------------
+
+-- EXTRA
+
+----------------------------------------------------------------------------------------------------
+
+--1) Liste o top 3 de funcionários com mais vendas no primeiro trimestre de 1997;
+
+/*
+SELECT employees.first_name AS Employee, COUNT (*) AS Orders1997Q1
+FROM orders
+INNER JOIN employees ON orders.employee_id = employees.employee_id
+WHERE order_date > '1997-01-01' AND order_date < '1997-03-31'
+GROUP BY Employee
+ORDER BY Orders1997Q1 DESC
+LIMIT 3;
+*/
+
+----------------------------------------------------------------------------------------------------
+
+--2) Conte todos os diferentes fornecedores por país. Agrupe categorizando os países em 'Americas' 
+--(se o país for USA, Brazil ou Canada) e 'Outros' senão. Detalhe, estamos buscando aqueles cujo 
+--DDD não comece com o dígito 1;
+
+/*
+SELECT DISTINCT COUNT (CASE WHEN country IN('USA', 'Brazil', 'Canada') THEN 1 END) AS Americas,
+COUNT (CASE WHEN country NOT IN('USA', 'Brazil', 'Canada') THEN 1 END) AS Outros
+FROM suppliers
+WHERE phone NOT LIKE '(1%' AND phone NOT LIKE '1%';
+*/
+
+----------------------------------------------------------------------------------------------------
+
+--3) Tome a primeira letra de cada cidade (ex. "N" para "New Orleans"). Quais são as 5 iniciais de nomes 
+--de cidades que têm mais fornecedores associados (em ordem descrescente de fornecedores/cidade)?
+
+/*
+SELECT SUBSTRING(city, 1, 1) AS Inicial, COUNT(company_name) AS Fornecedores
+FROM suppliers
+GROUP BY Inicial
+ORDER BY Fornecedores DESC
+LIMIT 5;
+*/

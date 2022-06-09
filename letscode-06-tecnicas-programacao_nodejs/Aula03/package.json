@@ -1,0 +1,12 @@
+{
+   "name": "letscode-nodejs-aula03",
+   "version": "1.0.0",
+   "description": "Aula03",
+   "main": "index03.js",
+   "type": "module",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "author": "",
+   "license": "ISC"
+}

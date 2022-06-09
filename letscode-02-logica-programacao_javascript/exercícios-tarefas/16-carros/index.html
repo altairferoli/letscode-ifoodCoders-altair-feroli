@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carros</title>
+  </head>
+  <body>
+    <header>
+      <h1>Loja de Carros</h1>
+      <hr />
+    </header>
+
+    <section>
+      <label for="">Insira o nome do veículo:</label>
+      <input type="text" id="nomeVeiculo" value="Digite aqui" onfocus="this.value=''" />
+      <button onclick="carros()">Adicionar</button>
+      <hr />
+    </section>
+
+    <section>
+      <p>Quantidade de veículos: <span id="qtdVeiculos">0</span></p>
+      <hr />
+    </section>
+
+    <section>
+      <p><span id="listaVeiculos"></span></p>
+    </section>
+
+    <script src="./carros.js"></script>
+  </body>
+</html>

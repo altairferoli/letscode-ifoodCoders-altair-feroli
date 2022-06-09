@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carros</title>
+  </head>
+  <body>
+    <header>
+      <h1>Loja de Carros</h1>
+      <hr />
+    </header>
+
+    <section>
+      <p>
+        <label for="">Modelo:</label>
+        <input type="text" id="modelo" value="Digite aqui" onfocus="this.value=''" />
+      </p>
+      <p>
+        <label for="">Ano:</label>
+        <input type="number" id="ano" />
+      </p>
+      <p>
+        <label for="">Cor:</label>
+        <input type="color" id="cor" />
+        <label for="">Condição:</label>
+        <select id="condicao">
+          <option value="novo">Novo</option>
+          <option value="seminovo">Seminovo</option>
+          <option value="usado">Usado</option>
+        </select>
+      </p>
+      <button type="reset" onclick="listaCarros()">Adicionar</button>
+      <hr />
+    </section>
+
+    <section>
+      <p>Quantidade de veículos: <span id="qtdVeiculos">0</span></p>
+      <hr />
+    </section>
+
+    <section>
+      <p><span id="listaVeiculos"></span></p>
+      <table border="1">
+        <thead>
+          <tr>
+            <td>Modelo</td>
+            <td>Ano</td>
+            <td>Cor</td>
+            <td>Condição</td>
+          </tr>
+        </thead>
+        <tbody id="lista">
+          <tr>
+            <td colspan="4">Não existem veículos cadastrados</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <script src="./carros.js"></script>
+  </body>
+</html>

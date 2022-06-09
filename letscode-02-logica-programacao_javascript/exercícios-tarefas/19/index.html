@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carros</title>
+  </head>
+  <body>
+    <header>
+      <h1>Loja de Carros</h1>
+      <hr />
+    </header>
+
+    <section>
+      <p>
+        <label for="">Modelo:</label>
+        <input type="text" id="modelo" value="Digite aqui" onfocus="this.value=''" />
+      </p>
+      <p>
+        <label for="">Ano:</label>
+        <input type="number" id="ano" />
+      </p>
+      <p>
+        <label for="">Cor:</label>
+        <input type="color" id="cor" />
+        <label for="">Condição:</label>
+        <select id="condicao">
+          <option value="Novo">Novo</option>
+          <option value="Semi-novo">Semi-novo</option>
+          <option value="Usado">Usado</option>
+        </select>
+      </p>
+      <p>
+        <label for="">Preço:</label>
+        <input type="number" id="preco" />
+      </p>
+      <button type="reset" onclick="listaCarros()">Adicionar</button>
+      <hr />
+    </section>
+
+    <section>
+      <p>Quantidade de veículos: <span id="qtdVeiculos">0</span></p>
+      <hr />
+    </section>
+
+    <section>
+      <p><span id="listaVeiculos"></span></p>
+      <table border="1">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Modelo</td>
+            <td>Ano</td>
+            <td>Cor</td>
+            <td>Condição</td>
+            <td>Preço</td>
+          </tr>
+        </thead>
+        <tbody id="lista">
+          <tr>
+            <td colspan="6">Não há nenhum veículo cadastrado!</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">Valor Total: </td>
+            <td id="totalVeiculos">0</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <script src="./carros.js"></script>
+  </body>
+</html>

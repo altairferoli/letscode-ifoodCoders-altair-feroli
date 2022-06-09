@@ -1,0 +1,25 @@
+#body {
+  background-color: #132e4c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+}
+
+figure {
+  display: flex;
+  background-color: white;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+}
+
+figure .foguete {
+  display: inline-block;
+  height: 150px;
+}
